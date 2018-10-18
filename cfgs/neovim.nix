@@ -4,6 +4,7 @@ let
   inherit (pkgs.vimUtils) buildVimPluginFrom2Nix;
   inherit (pkgs) fetchFromGitHub callPackage;
 
+  nvim-typescript = callPackage ../pkgs/nvim-typescript/default.nix {};
 
   deoplete-zsh = (buildVimPluginFrom2Nix {
     name = "deoplete-zsh-2018-10-12";
@@ -113,6 +114,7 @@ in
               fzf-vim
               gitgutter
               multiple-cursors
+              nvim-typescript
               syntastic
               #typescript-vim
               vim-closetag
