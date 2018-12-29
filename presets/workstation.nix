@@ -6,6 +6,7 @@
     ../cfgs/chromium.nix
     ../cfgs/firefox.nix
     ../cfgs/keybase.nix
+    ../cfgs/lutris.nix
     ../cfgs/networkmanager.nix
     ../cfgs/nodejs.nix
     ../cfgs/rust.nix
