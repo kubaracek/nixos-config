@@ -1,4 +1,4 @@
-{ lib, pkgs, isLinux, isDarwin, ... }:
+{ lib, pkgs, ... }:
 
 let
   inherit (lib) optional optionalAttrs;
@@ -11,11 +11,9 @@ in
             fira
             fira-mono
             fira-code
+            emojione
           ]
-          ++ optional isLinux emojione;
       }
 
-      // optionalAttrs isDarwin {
-        enableFontDir = true;
-      };
+    enableFontDir = true;
   }

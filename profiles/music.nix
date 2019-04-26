@@ -1,8 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+  ];
+
   environment.systemPackages = with pkgs; [
-    rustc
-    cargo
+    spotify
   ];
 }

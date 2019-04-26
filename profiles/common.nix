@@ -1,4 +1,4 @@
-{ config, lib, pkgs, __nixPath, isLinux, isDarwin, ... }:
+{ config, lib, pkgs, __nixPath, ... }:
 
 let
   inherit (lib) optional optionals optionalAttrs;
@@ -7,66 +7,38 @@ in
     imports =
       [
         "config/htop.nix"
-        "config/neovim.nix"
-        "config/tmux.nix"
-        "config/zsh.nix"
-      ]
-
-      ++ optionals isLinux [
         "profiles/hosts.nix"
         "profiles/users.nix"
       ];
 
-      environment.systemPackages =
-        (with pkgs; [
-          ack
+      # The default stuff
+      environment.systemPackages = with pkgs; [
+          ag
           curl
           file
-          gnupg
-          mosh
-          nix-prefetch-git
-          nmap
-          pv
-          telnet
-          unzip
-          w3m
           wget
-          youtube-dl
-          zip
-
           git
-          gitAndTools.git-hub
-          gitAndTools.hub
-          gitAndTools.git-fame
-          lab
-        ])
-        ++ optional isLinux pkgs.whois
-        ++ optional isDarwin pkgs.coreutils;
+          whois
+          speedtest-cli
+      ];
 
-        nixpkgs.config.allowUnfree = true;
-      }
+      # Yaay
+      nixpkgs.config.allowUnfree = true;
 
-      // optionalAttrs isLinux {
-        services.gpm.enable = true;
+      services.gpm.enable = true;
 
-        time.timeZone = "America/New_York";
+      time.timeZone = "Europe/Prague";
 
-        networking.firewall.enable = true;
+      networking.firewall.enable = true;
 
-        i18n = {
-          consoleFont = "Lat2-Terminus16";
-          defaultLocale = "en_US.UTF-8";
-          consoleUseXkbConfig = true;
-        };
+      i18n = {
+        defaultLocale = "en_US.UTF-8";
+        consoleUseXkbConfig = true;
+      };
 
-        services.xserver = {
-          layout = "us";
-          xkbOptions = "caps:escape,compose:prsc";
-        };
+      services.xserver = {
+        layout = "us";
+      };
 
-        system.stateVersion = "18.09";
-      }
-
-      // optionalAttrs isDarwin {
-        system.stateVersion = 3;
-      }
+      system.stateVersion = "19.03";
+  }

@@ -14,30 +14,24 @@ in
       ];
     };
 
-    users.extraUsers.rummik = {
+    users.extraUsers.jakub = {
+      description = "Jakub Racek <me@jakubracek.net>"
       isNormalUser = true;
       linger = true;
       uid = 1000;
-      # Dialout for accessing ttyACM*
+      group = "users";
       extraGroups = [
         "wheel"
-        "video"
-        "audio"
         "networkmanager"
-        "dialout"
-        "vboxusers"
-        "wireshark"
         "docker"
-        "adbusers"
-        "render"
       ];
       createHome = true;
-      initialPassword = "correct horse battery staple";
+      initialPassword = "rootroot";
       useDefaultShell = true;
       openssh.authorizedKeys.keys = authorizedKeys;
     };
 
-    home-manager.users.rummik = { ... }: {
+    home-manager.users.jakub = { ... }: {
       imports = [
         ../config/home/git.nix
       ];

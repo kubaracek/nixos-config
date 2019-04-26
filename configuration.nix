@@ -14,9 +14,8 @@ let
       path =
         fetchTarball {
           url =
-            let ref = "4323b351"; in
+            let ref = "master"; in
             "https://github.com/rycee/home-manager/archive/${ref}.tar.gz";
-          sha256 = "15plwlv13w1slhb6wwr0barxh570l577g3qf6mkh8xjnkk66pza2";
         };
     }
   ];

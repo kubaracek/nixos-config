@@ -1,4 +1,4 @@
-{ lib, isLinux, isDarwin, ... }:
+{ lib, ... }:
 
 let
   inherit (lib) optionals;
@@ -11,6 +11,5 @@ let
 in
   {
     imports =
-      readPath ./. [ "os-specific" "default.nix" ]
-      ++ optionals isLinux (readPath ./os-specific/linux []);
+      readPath ./. [ "default.nix" ]
   }
