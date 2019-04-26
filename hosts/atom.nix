@@ -13,6 +13,13 @@
     "profiles/x.nix"
   ];
 
+  # Bootloader
+  boot.loader = {
+    grub.enable = true;
+    grub.version = 2;
+    grub.device = "/dev/sda";
+  };
+
   networking.firewall.allowedTCPPortRanges = [
     { from = 4100; to = 4105; }
   ];
