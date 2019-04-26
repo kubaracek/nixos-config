@@ -9,7 +9,7 @@ if [[ -d $INSTALL_PATH ]]; then
   cp $INSTALL_PATH-orig/hardware-configuration.nix $INSTALL_PATH
 fi
 
-git git@github.com:kubaracek/nixos-config.git $INSTALL_PATH
+git clone git@github.com:kubaracek/nixos-config.git $INSTALL_PATH
 cd $INSTALL_PATH
 
 if [[ ! -e ./hosts/$HOST.nix ]]; then
