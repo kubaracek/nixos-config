@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ft, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   boot.initrd.availableKernelModules = [
@@ -20,8 +20,6 @@
     "i915.lvds_downclock=1"
     "i915.semaphores=1"
   ];
-
-  nix.maxJobs = lib.mkDefault 4;
 
   powerManagement.cpuFreqGovernor = "powersave";
   powerManagement.powertop.enable = true;
@@ -46,10 +44,5 @@
 
     videoDrivers = [ "modesetting" ];
     useGlamor = true;
-
-    deviceSection = ''${ft.xf86conf}
-      Option "TearFree" "true"
-      Option "AccelMethod" "sna"
-    '';
   };
 }

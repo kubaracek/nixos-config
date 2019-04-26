@@ -15,9 +15,8 @@ in
     };
 
     users.extraUsers.jakub = {
-      description = "Jakub Racek <me@jakubracek.net>"
+      description = "Jakub Racek <me@jakubracek.net>";
       isNormalUser = true;
-      linger = true;
       uid = 1000;
       group = "users";
       extraGroups = [
@@ -37,3 +36,4 @@ in
       ];
     };
   }
+

@@ -6,7 +6,7 @@
   ];
 
   services.xserver = {
-    enalbe = true;
-    default = "gnome3";
+    enable = true;
+    desktopManager.default = "gnome3";
   };
 }

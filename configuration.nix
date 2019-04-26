@@ -36,8 +36,7 @@ let
 
   inject = {
     inherit __nixPath hostname isLinux isDarwin;
-
-    ft = import ./overlays/ft.nix lib;
+    ft = lib;
   };
 
   moduleArgs = m: removeAttrs (functionArgs m) (__attrNames inject);
@@ -69,8 +68,6 @@ in
               toString path
         )
         __nixPath;
-
-    nixpkgs.overlays = [ (import ./overlays) ];
 
     imports =
       [
