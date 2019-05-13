@@ -4,8 +4,6 @@ let
   authorizedKeys = import ./authorized-keys.nix;
 in
   {
-    users.defaultUserShell = pkgs.zsh;
-
     users.users.root.openssh.authorizedKeys.keys = authorizedKeys;
 
     home-manager.users.root = { ... }: {
@@ -31,8 +29,24 @@ in
     };
 
     home-manager.users.jakub = { ... }: {
+      
+      home.packages = [
+        # Doom
+        pkgs.gnutls
+        pkgs.aspell
+        pkgs.editorconfig-core-c
+
+        # Global langs
+        pkgs.ruby
+        pkgs.ripgrep
+        pkgs.fd
+      ];
+
       imports = [
         ../config/home/git.nix
+        ../config/home/home.nix
+        ../config/home/xmonad.nix
+        ../config/home/emacs.nix
       ];
     };
   }

@@ -9,5 +9,8 @@
 
   environment.systemPackages = with pkgs; [
     kubectl
+    slack
+    discord
+    wire-desktop
   ];
 }

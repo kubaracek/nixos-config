@@ -1,4 +1,4 @@
-{ config, lib, pkgs, __nixPath, ... }:
+{ config, lib, pkgs, __nixPath, ft, ... }:
 
 let
   inherit (lib) optional optionals optionalAttrs;
@@ -20,7 +20,20 @@ in
           git
           whois
           speedtest-cli
+          nix-prefetch-git
+          vim
+          rofi
+          taffybar
+          xorg.xbacklight
+          feh
+          gcc
+          emacs
       ];
+
+      sound.enable = true;
+      hardware.pulseaudio.enable = true;
+      
+      hardware.brightnessctl.enable = true;
 
       # Yaay
       nixpkgs.config.allowUnfree = true;
@@ -39,6 +52,13 @@ in
       services.xserver = {
         layout = "us";
       };
+      # Swap caps for ctrl
+      services.xserver.xkbOptions = "ctrl:nocaps";
 
       system.stateVersion = "19.03";
+      fonts.fonts = with pkgs ; [
+        dina-font
+        siji
+        unifont
+      ];
   }

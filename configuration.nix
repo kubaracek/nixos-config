@@ -14,8 +14,9 @@ let
       path =
         fetchTarball {
           url =
-            let ref = "master"; in
+            let ref = "4323b351"; in
             "https://github.com/rycee/home-manager/archive/${ref}.tar.gz";
+          sha256 = "15plwlv13w1slhb6wwr0barxh570l577g3qf6mkh8xjnkk66pza2";
         };
     }
   ];
@@ -36,7 +37,8 @@ let
 
   inject = {
     inherit __nixPath hostname isLinux isDarwin;
-    ft = lib;
+
+    ft = import ./overlays/ft.nix lib;
   };
 
   moduleArgs = m: removeAttrs (functionArgs m) (__attrNames inject);
@@ -68,6 +70,8 @@ in
               toString path
         )
         __nixPath;
+
+    nixpkgs.overlays = [ (import ./overlays) ];
 
     imports =
       [

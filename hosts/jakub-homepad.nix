@@ -10,7 +10,6 @@
     "profiles/workstation.nix"
     "profiles/music.nix"
     "profiles/movies.nix"
-    "profiles/x.nix"
   ];
 
   # Bootloader
@@ -35,7 +34,19 @@
     9001
     1337
   ];
+  
 
+  services.xserver = {
+    enable = true;
+    windowManager = {
+      xmonad.enable = true;
+      default = "xmonad";
+    };
+    desktopManager = {
+      xterm.enable = false;
+      default = "none";
+    };
+  };
 
   # Extra packages
   environment.systemPackages = with pkgs; [
