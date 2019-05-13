@@ -62,7 +62,11 @@ in
         unifont
       ];
 
-      # Go with garbage and optimize store from time to time
-      nix.gc.automatic = true;
+      # Go with garbage, optimize and upgrade from time to time
+      nix.gc = {
+        automatic = true;
+        options = "--delete-older-than 14d";
+      };
       nix.optimise.automatic = true;
+      system.autoUpgrade.enable = true;
   }
