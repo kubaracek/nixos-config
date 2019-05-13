@@ -62,6 +62,7 @@ in
         unifont
       ];
 
-      # Clean garbage from time to time
+      # Go with garbage and optimize store from time to time
       nix.gc.automatic = true;
+      nix.optimise.automatic = true;
   }
