@@ -61,4 +61,7 @@ in
         siji
         unifont
       ];
+
+      # Clean garbage from time to time
+      nix.gc.automatic = true;
   }
